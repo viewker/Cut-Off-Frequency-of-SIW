@@ -8,9 +8,10 @@ s = 0.5
 c = 3e2
 
 
-Em = [2.2,3.66]
+Em = [2.2,3.66,6.15]
 F_cutoff1 = []
 F_cutoff2 = []
+F_cutoff3 = []
 index = 0
 for a in Em:
     for i in W:
@@ -19,15 +20,18 @@ for a in Em:
         w_eff = W_d * np.sqrt(a)
         if index ==0:
             F_cutoff1.append(c/(2*w_eff))
-        else :
+        elif index == 1 :
             F_cutoff2.append(c/(2*w_eff))
+        else:
+            F_cutoff3.append(c/(2*w_eff))
     index += 1
 
     
 
 plt.figure(1,figsize =(16,10),dpi = 100)
-plt.plot(W,F_cutoff1,'r--',linewidth = 3,label = r'Em = 2.2')
-plt.plot(W,F_cutoff2,'b+',linewidth = 3,label = r'Em = 3.66')
+plt.plot(W,F_cutoff1,'r--',linewidth = 3,label = r'Permittivity = 2.2')
+plt.plot(W,F_cutoff2,'b+',linewidth = 3,label = r'Permittivity = 3.66')
+plt.plot(W,F_cutoff3,'green',linewidth = 3,label = r'Permittivity = 6.15')
 plt.title('Frequency Cutoff',fontsize = 30,family = 'Times New Roman',fontweight = 'bold')
 plt.xlabel('Width Of SIW (mm)',fontsize = 24,family = 'Times New Roman')
 plt.ylabel('Frequency (GHz)',fontsize = 24,family = 'Times New Roman')
